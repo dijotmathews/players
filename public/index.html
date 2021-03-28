@@ -41,9 +41,18 @@
 	</nav>
 
 	<ul class="sidenav" id="mobile-links">
-		<li><a href="#">Account</a></li>
-		<li><a href="#">Create Player</a></li>
-		<li><a href="#">Logout</a></li>
+		<li class="logged-out">
+			<a href="#" class="teal-text accent-2 modal-trigger" data-target="modal-login">Login</a>
+		</li>
+		<li class="logged-in">
+			<a href="#" class="teal-text accent-2 modal-trigger" data-target="modal-account">Account</a>
+		</li>
+		<li class="logged-in">
+			<a href="#" class="teal-text accent-2 modal-trigger" data-target="modal-create">Create Player</a>
+		</li>
+		<li class="logged-in">
+			<a href="#" class="teal-text accent-2 " id="logout">Logout</a>
+		</li>
 	</ul>
 
 	<!-- SIGN UP MODAL -->
