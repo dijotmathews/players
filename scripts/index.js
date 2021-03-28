@@ -1,15 +1,25 @@
 // setting up the players
 
-const playerList = document.querySelector('.guides');
+const playerList = document.querySelector('.players');
 const loggedOutLinks = document.querySelectorAll('.logged-out');
 const loggedInLinks = document.querySelectorAll('.logged-in');
-
+const accountsDetails = document.querySelector('.account-details');
 
 const setupUI = (user) => {
 	if(user){
+
+		const html = `
+			<div>Logged in as ${user.email}</div>
+		`;
+
+
+		accountsDetails.innerHTML = html;
+
 		loggedInLinks.forEach(item => item.style.display = 'block');
 		loggedOutLinks.forEach(item => item.style.display = 'none');
 	} else {
+
+		accountsDetails.innerHTML = '';
 		loggedInLinks.forEach(item => item.style.display = 'none');
 		loggedOutLinks.forEach(item => item.style.display = 'block');
 	}
@@ -23,7 +33,7 @@ const setupPlayers = (data) => {
 
 		data.forEach(doc => {
 			const player = doc.data();
-			console.log(player);
+			// console.log(player);
 
 			const li = `
 				<li> 

@@ -6,10 +6,14 @@ auth.onAuthStateChanged(user => {
 	if(user){
 		console.log("user logged in ", user)
 		// get data
-		db.collection('players').get().then(snapshot => {
+		db.collection('players').onSnapshot(snapshot => {
 			setupPlayers(snapshot.docs)
 			setupUI(user);
+		}, err => {
+			console.log(err.message);
 		});
+			
+		
 
 	} else {
 		setupUI();
@@ -20,6 +24,29 @@ auth.onAuthStateChanged(user => {
 	
 });
 
+// create new player
+const createForm = document.querySelector("#create-form");
+
+createForm.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	db.collection('players').add({
+		first_name: createForm['first_name'].value,
+		last_name: createForm['last_name'].value,
+		mob: createForm['mob'].value,
+		yob: createForm['yob'].value,
+		contact: createForm['contact'].value,
+		gender: createForm['gender'].value
+	}).then( () => {
+		//close modal and reset the form for later
+		const modal = document.querySelector('#modal-create');
+		M.Modal.getInstance(modal).close();
+		createForm.reset();
+	}).catch( err => {
+		console.log(err.message);
+	});
+
+});
 
 // signup
 const signupForm = document.querySelector('#signup-form');
