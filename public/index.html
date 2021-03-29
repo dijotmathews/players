@@ -24,16 +24,19 @@
 				<a href="#" class="yellow-text accent-2 modal-trigger" data-target="modal-account">Account</a>
 			</li>
 			<li class="logged-in">
-			<a href="#" class="yellow-text accent-2 " id="logout">Logout</a>
+				<a href="#" class="yellow-text accent-2 " id="logout">Logout</a>
 			</li>
 			<li class="logged-in">
-			<a href="#" class="yellow-text accent-2 modal-trigger" data-target="modal-create">Create Player</a>
+				<a href="#" class="yellow-text accent-2 modal-trigger" data-target="modal-create">Create Player</a>
+			</li>
+			<li class="logged-in">
+				<a href="#" class="yellow-text accent-2 modal-trigger" data-target="modal-tour-create">Create Tournament</a>
 			</li>
 			<li class="logged-out">
-			<a href="#" class="yellow-text accent-2 modal-trigger" data-target="modal-login">Login</a>
+				<a href="#" class="yellow-text accent-2 modal-trigger" data-target="modal-login">Login</a>
 			</li>
 			<li class="logged-out">
-			<a href="#" class="yellow-text accent-2 modal-trigger" data-target="modal-signup">Sign up</a>
+				<a href="#" class="yellow-text accent-2 modal-trigger" data-target="modal-signup">Sign up</a>
 			</li>
 
 		</ul>
@@ -49,6 +52,9 @@
 		</li>
 		<li class="logged-in">
 			<a href="#" class="teal-text accent-2 modal-trigger" data-target="modal-create">Create Player</a>
+		</li>
+		<li class="logged-in">
+			<a href="#" class="yellow-text accent-2 modal-trigger" data-target="modal-tour-create">Create Tournament</a>
 		</li>
 		<li class="logged-in">
 			<a href="#" class="teal-text accent-2 " id="logout">Logout</a>
@@ -100,6 +106,50 @@
 	</div>
 	</div>
 
+	<!-- CREATE TOURNAMENT -->
+	<div class="modal" id="modal-tour-create">
+		
+		<div class="modal-content">
+			<h4>Create Tournament</h4>
+			<form action="" id="create-tournament">
+				<div class="row">
+					<div class="col s6">
+						<div class="input-field">
+							<input type="text" id="name" required>
+							<label for="name">Tournament Name</label>
+						</div>
+					</div>
+
+					<!-- <div class="col s6">
+						<div class="input-field">
+						<select>
+							<option value="" disabled selected>Choose the category</option>
+							<option value="u10">Under 10</option>
+							<option value="u12">under 12</option>
+							<option value="u14">Under 14</option>
+						</select>
+						<label>Category</label>
+					</div>					 -->
+				</div>
+
+				<div class="row">
+					<div class="input-field col s12">
+						<select>
+						  <option value="" disabled selected>Choose your option</option>
+						  <option value="1">Option 1</option>
+						  <option value="2">Option 2</option>
+						  <option value="3">Option 3</option>
+						</select>
+						<label>Materialize Select</label>
+					  </div>
+
+				</div>
+				<button class="btn yellow darken-2 z-depth-0">Create</button>
+			</form>
+
+		</div>
+	</div>
+
 
 	<!-- CREATE USER MODAL -->
 	<div id="modal-create" class="modal">
@@ -136,12 +186,12 @@
 			</div>
 		</div>	
 		<div class="row">
-			<div class="col s6">
+			<!-- <div class="col s6">
 				<div class="input-field">
 					<input type="text" id="contact" required>
 					<label for="contact">Contact Number</label>
 				</div>
-			</div>
+			</div> -->
 			<div class="col s6">
 				<div class="input-field">
 					<input type="text" id="gender" required>
@@ -187,6 +237,8 @@
 		appId: "1:934912475382:web:04ce93a38cb41a44d2acd7",
 		measurementId: "G-0FRYE3M379"
 	};
+
+
 	// Initialize Firebase
 	firebase.initializeApp(firebaseConfig);
 	firebase.analytics();
@@ -194,7 +246,12 @@
 
 	//make auth and firestore references
 	const auth = firebase.auth();
+	// auth.useEmulator('http://localhost:9099');
+
 	const db = firebase.firestore();
+	// if(location.hostname === "localhost") {
+	// 	db.useEmulator('localhost', 8080);
+	// }
 
 	//update firestore settings
 	db.settings({ timestampsInSnapshots: true });

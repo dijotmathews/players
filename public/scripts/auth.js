@@ -35,7 +35,7 @@ createForm.addEventListener('submit', (e) => {
 		last_name: createForm['last_name'].value,
 		mob: createForm['mob'].value,
 		yob: createForm['yob'].value,
-		contact: createForm['contact'].value,
+		// contact: createForm['contact'].value,
 		gender: createForm['gender'].value
 	}).then( () => {
 		//close modal and reset the form for later
@@ -68,7 +68,7 @@ signupForm.addEventListener('submit', (e) => {
 
 	});
 
-	console.log(email + " -  " + password);
+	// console.log(email + " -  " + password);
 });
 
 // sign out

@@ -64,3 +64,8 @@ node_modules/
 
 # dotenv environment variables file
 .env
+firestore.indexes.json
+database.rules.json
+remoteconfig.template.json
+storage.rules
+firestore.rules
